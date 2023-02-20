@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useAppSelector } from "./app/hooks";
+import { AppRouter } from "./components/elements/AppRouter";
+import { selectRole } from "./redux/app/appSlice";
+import { privateRoutes } from "./router";
+import { getUserCredentialFromStorage } from "./services/auth";
 
 function App() {
+  const role = useAppSelector(selectRole) || getUserCredentialFromStorage();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppRouter
+      authorities={role}
+      privateRoutes={privateRoutes}
+      defaultRedirect="/login"
+    />
   );
 }
 
