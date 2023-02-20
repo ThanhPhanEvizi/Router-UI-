@@ -1,65 +1,30 @@
-import { BoxProps } from "@mui/system";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import "animate.css";
-import { Row } from ".";
+import { AnimationOnScrollProps } from "../../types/animation";
 
-interface UiBoxProps extends BoxProps {
-  animationDelay?: string;
-  animationDuration?: string;
-  children: React.ReactNode;
-}
+interface Props extends AnimationOnScrollProps {}
 
-export const AnimationZoomIn = ({
+export const UiAnimation = ({
   children,
-  sx,
-  animationDelay = "0s",
-  animationDuration = "1s",
-}: UiBoxProps) => {
+  duration = 1,
+  animateIn = "animate__zoomIn",
+  animateOnce = true,
+  offset = 150,
+  delay = 0,
+}: Props) => {
   return (
     <AnimationOnScroll
-      animateOnce
-      animateIn="animate__zoomIn"
+      offset={offset}
+      animateOnce={animateOnce}
+      animateIn={animateIn}
+      duration={duration}
+      delay={delay}
       style={{
         zIndex: "100",
         position: "relative",
-        animationDelay: animationDelay,
-        animationDuration: animationDuration,
       }}
     >
-      <Row
-        sx={{
-          ...sx,
-        }}
-      >
-        {children}
-      </Row>
-    </AnimationOnScroll>
-  );
-};
-
-export const AnimateBounceInUp = ({
-  children,
-  sx,
-  animationDelay = "0s",
-  animationDuration = "1s",
-}: UiBoxProps) => {
-  return (
-    <AnimationOnScroll
-      animateOnce
-      animateIn="animate__animated animate__bounceInUp"
-      style={{
-        position: "relative",
-        animationDuration: animationDuration,
-        animationDelay: animationDelay,
-      }}
-    >
-      <Row
-        sx={{
-          ...sx,
-        }}
-      >
-        {children}
-      </Row>
+      {children}
     </AnimationOnScroll>
   );
 };

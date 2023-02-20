@@ -2,12 +2,7 @@ import { CardMedia, Grid } from "@mui/material";
 import { Container, SxProps } from "@mui/system";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import "animate.css";
-import {
-  Col,
-  Text,
-  AnimateBounceInUp,
-  AnimationZoomIn,
-} from "../../../components/elements";
+import { Col, Row, Text, UiAnimation } from "../../../components/elements";
 import tech from "../../../assets/landing/tech.svg";
 import dashboard from "../../../assets/landing/dashboard.png";
 import layoutDashboard from "../../../assets/landing/layout_dashboard.png";
@@ -43,7 +38,7 @@ const Intro = () => {
                 height: "100%",
               }}
             >
-              <AnimateBounceInUp>
+              <UiAnimation animateIn="animate__bounceInUp">
                 <Text
                   sx={{
                     fontSize: "3.5em",
@@ -55,22 +50,21 @@ const Intro = () => {
                   <br /> Power Your Next
                   <br /> React Project
                 </Text>
-              </AnimateBounceInUp>
-              <AnimateBounceInUp animationDelay="0.4s">
+              </UiAnimation>
+              <UiAnimation animateIn="animate__bounceInUp" delay={400}>
                 <Text sx={{ fontSize: "1.1em" }}>
                   Berry is React based Dashboard template which helps you
                   <br /> to build faster and beautiful web applications.
                 </Text>
-              </AnimateBounceInUp>
-              <AnimateBounceInUp
-                animationDelay="0.8s"
-                sx={{ margin: "30px 0px" }}
-              >
-                <UiButton icon={<PlayArrowIcon />}>Live Preview</UiButton>
-              </AnimateBounceInUp>
-              <AnimateBounceInUp animationDelay="1.2s">
+              </UiAnimation>
+              <UiAnimation animateIn="animate__bounceInUp" delay={800}>
+                <UiButton icon={<PlayArrowIcon />} sx={{ margin: "30px 0px" }}>
+                  Live Preview
+                </UiButton>
+              </UiAnimation>
+              <UiAnimation animateIn="animate__bounceInUp" delay={1200}>
                 <CardMedia component="img" image={tech} sx={{ width: "80%" }} />
-              </AnimateBounceInUp>
+              </UiAnimation>
             </Col>
           </Grid>
           <Grid item xs={7} sx={{ height: "100%" }}>
@@ -99,32 +93,36 @@ const Intro = () => {
                   transformOrigin: "0px 50%",
                 }}
               />
-              <AnimationZoomIn
-                sx={{
-                  position: "absolute",
-                  right: "-380px",
-                  top: "-440px",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={profile}
-                  sx={{ ...animation }}
-                />
-              </AnimationZoomIn>
-              <AnimationZoomIn
-                sx={{
-                  position: "absolute",
-                  left: "300px",
-                  top: "-100px",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={widget}
-                  sx={{ ...animation }}
-                />
-              </AnimationZoomIn>
+              <UiAnimation animateIn="animate__zoomIn">
+                <Row
+                  sx={{
+                    position: "absolute",
+                    right: "-380px",
+                    top: "-440px",
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    image={profile}
+                    sx={{ ...animation }}
+                  />
+                </Row>
+              </UiAnimation>
+              <UiAnimation animateIn="animate__zoomIn">
+                <Row
+                  sx={{
+                    position: "absolute",
+                    left: "300px",
+                    top: "-100px",
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    image={widget}
+                    sx={{ ...animation }}
+                  />
+                </Row>
+              </UiAnimation>
             </Col>
           </Grid>
         </Grid>

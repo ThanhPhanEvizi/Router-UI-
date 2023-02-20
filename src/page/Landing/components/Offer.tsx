@@ -1,11 +1,6 @@
 import { CardMedia, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import {
-  AnimateBounceInUp,
-  Col,
-  Row,
-  Text,
-} from "../../../components/elements";
+import { UiAnimation, Col, Row, Text } from "../../../components/elements";
 import { OFFER_LIST } from "../../../constants";
 
 interface OfferBoxProps {
@@ -66,16 +61,19 @@ const Offer = () => {
           </Col>
           <Grid container rowSpacing={8} columnSpacing={4}>
             {OFFER_LIST.map((offer, index) => {
-              const animationDuration = `${1 + index / 5}s`;
+              const animationDuration = 1 + index / 5;
               return (
                 <Grid key={index} item xs={4}>
-                  <AnimateBounceInUp animationDuration={animationDuration}>
+                  <UiAnimation
+                    animateIn="animate__bounceInUp"
+                    duration={animationDuration}
+                  >
                     <OfferBox
                       image={offer.image}
                       title={offer.title}
                       description={offer.description}
                     />
-                  </AnimateBounceInUp>
+                  </UiAnimation>
                 </Grid>
               );
             })}
